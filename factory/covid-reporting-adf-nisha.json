@@ -1,0 +1,9 @@
+{
+	"name": "covid-reporting-adf-nisha",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f7d1c276-e077-4802-8948-64231ebfa1ba",
+		"tenantId": "84f1e4ea-8554-43e1-8709-f0b8589ea118"
+	}
+}
