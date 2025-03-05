@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "df_hospital_data",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -180,9 +180,11 @@
 				"     columnNaming: '$V_$N',",
 				"     lateral: true) ~> pivotDaily",
 				"pivot1 sort(desc(reported_year_week, true),",
-				"     asc(country, true)) ~> sortWeekly",
+				"     asc(country, true),",
+				"     partitionBy('hash', 1)) ~> sortWeekly",
 				"pivotDaily sort(desc(reported_date, true),",
-				"     asc(country, true)) ~> sort1",
+				"     asc(country, true),",
+				"     partitionBy('hash', 1)) ~> sort1",
 				"sortWeekly select(mapColumn(",
 				"          country,",
 				"          country_code_2_digit,",
@@ -211,18 +213,22 @@
 				"     skipDuplicateMapOutputs: true) ~> select3",
 				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['hospital_admissions_weekly.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1",
 				"select3 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     partitionFileNames:['hospital_admission_daily.csv'],",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink2"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink2"
 			]
 		}
 	}
