@@ -16,18 +16,18 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "JsonSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "JsonReadSettings"
 						}
 					},
 					"dataset": {
-						"referenceName": "ds_ecdc_file_list",
+						"referenceName": "ds_ecdc_test_file",
 						"type": "DatasetReference"
 					},
 					"firstRowOnly": false
