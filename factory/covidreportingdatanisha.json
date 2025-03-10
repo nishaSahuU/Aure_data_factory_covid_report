@@ -1,0 +1,9 @@
+{
+	"name": "covidreportingdatanisha",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "19d9709e-8c68-4e27-90c3-b8de276faaf3",
+		"tenantId": "84f1e4ea-8554-43e1-8709-f0b8589ea118"
+	}
+}
